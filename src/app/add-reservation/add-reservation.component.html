@@ -1,0 +1,201 @@
+<h1 mat-dialog-title>Reservation Details</h1>
+<form [formGroup]="formGroup" #ngForm="ngForm" (submit)="onSubmit()">
+    <div mat-dialog-content>
+
+
+        <mat-grid-list cols="3" rowHeight="5:1">
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Date of Arrival</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="doa">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Date of Depature</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="dod">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Room size</mat-label>
+                    <mat-select formControlName="room_size">
+                        <mat-option [value]="1">business-suite</mat-option>
+                        <mat-option [value]="2">presidential-suite</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Room quantity</mat-label>
+                    <input type="number" formControlName="room_quantity" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" formControlName="first_name" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" formControlName="last_name" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" formControlName="email" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Phone No</mat-label>
+                    <input type="text" formControlName="phone" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Street name</mat-label>
+                    <input type="text" formControlName="street_name" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Street number</mat-label>
+                    <input type="text" formControlName="street_number" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Zip</mat-label>
+                    <input type="text" formControlName="zip" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>State</mat-label>
+                    <input type="text" formControlName="state" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>City</mat-label>
+                    <input type="text" formControlName="city" matInput>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <mat-label>Extras</mat-label>
+                    <mat-select formControlName="extras">
+                        <mat-option [value]="1">extraBreakfast</mat-option>
+                        <mat-option [value]="2">extraTV</mat-option>
+                        <mat-option [value]="3">extraWiFi</mat-option>
+                        <mat-option [value]="4">extraParking</mat-option>
+                        <mat-option [value]="5">extraBalcony</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile colspan="3">
+                <div class="my-fiels">
+                    <mat-radio-group [ngClass]="{'invalid': ngForm.submitted && formGroup.get('payment')?.invalid}" formControlName="payment">
+                        <mat-radio-button value="credit_card">Credit Card</mat-radio-button>
+                        <mat-radio-button value="paypal">Paypal</mat-radio-button>
+                        <mat-radio-button value="cash">Cash</mat-radio-button>
+                        <mat-radio-button value="bitcoin">Bitcoin</mat-radio-button>
+                    </mat-radio-group>
+                    <div *ngIf="ngForm.submitted && formGroup.get('payment')?.invalid">
+                        <small class="validation">Payment is Required</small>
+                    </div>
+                </div>
+            </mat-grid-tile>
+
+
+            <mat-grid-tile colspan="2">
+                <mat-form-field class="my-fiels" appearance="fill">
+                    <!-- <mat-label>Tags</mat-label> -->
+                    <mat-chip-list #chipGrid aria-label="Tags">
+                        <mat-chip *ngFor="let data of tags" (removed)="remove(data)">
+                            {{data}}
+                            <button matChipRemove [attr.aria-label]="'remove ' + data">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip>
+                    </mat-chip-list>
+                    <input placeholder="New Tags..." #tagsInput [formControl]="tagCtrl" [matChipInputFor]="chipGrid"
+                        [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" />
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                        <mat-option *ngFor="let data of filteredTags | async" [value]="data">
+                            {{data}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+
+            <mat-grid-tile>
+                <section class="my-fiels">
+                    <mat-slide-toggle class="example-margin" formControlName="isReminder">
+                        Send me a reminder
+                    </mat-slide-toggle>
+                </section>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <section class="my-fiels">
+                    <mat-slide-toggle class="example-margin" formControlName="isSubscribeNewsletter">
+                        Subscribe to newsletter
+                    </mat-slide-toggle>
+                </section>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>
+                <section class="my-fiels">
+                    <mat-checkbox class="example-margin" formControlName="isConfirm">i confirm the information given
+                        above</mat-checkbox>
+                </section>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+        </mat-grid-list>
+
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>CANCEL</button>
+        <button mat-button *ngIf="mode != 'view'" cdkFocusInitial>{{mode |
+            uppercase}}</button>
+    </mat-dialog-actions>
+</form>

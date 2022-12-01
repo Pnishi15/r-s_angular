@@ -1,0 +1,22 @@
+.my-fiels{
+    width: 90%;
+}
+
+.my-fiels .mat-form-field-infix{
+    width: 100% !important;
+    display: flex !important;
+}
+
+.mat-radio-button {
+    margin-right: 10px !important;
+}
+
+.validation{
+    color: red;
+    margin-top: 15px;
+    display: block;
+}
+
+.invalid{
+    color:#f44336;
+}

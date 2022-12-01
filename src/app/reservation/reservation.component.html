@@ -1,0 +1,45 @@
+<div class="my-search">
+    <mat-card class="my-search-box">
+        <mat-card-content>
+            <input placeholder="Search with First Name/ Last Name/ Email" (keyup)="onSearch()"  [(ngModel)]="search_text" type="text" aria-label="Search with Name"
+                class="my-search-input" value="">
+                <mat-icon class="my-search-icon" >search</mat-icon>
+        </mat-card-content>
+    </mat-card>
+    
+    <button class="my-search-btn" (click)="onAdd()" button mat-raised-button color="primary">ADD</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="my-table mat-elevation-z8">
+
+    <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef> First Name. </th>
+        <td mat-cell *matCellDef="let element" (click)="onEdit(element,'view')"> {{element.first_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element" (click)="onEdit(element,'view')"> {{element.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element" (click)="onEdit(element,'view')"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let element" (click)="onEdit(element,'view')"> {{element.phone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element let i = index;" [ngStyle]="{'width.px':'80'}">
+        <a href="javascript:;" (click)="onEdit(element,'edit',i)" class="my-table-icon"><mat-icon >edit</mat-icon></a>    
+        <a href="javascript:;" (click)="onDelete(element)" class="my-table-icon"><mat-icon >delete</mat-icon></a>    
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
